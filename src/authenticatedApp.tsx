@@ -1,6 +1,7 @@
 import './App.css';
 import { useAuth0 } from '@auth0/auth0-react';
 import { redirectURI } from './main';
+import { Outlet } from 'react-router-dom';
 
 interface AuthenticatedAppProps {}
 
@@ -18,6 +19,7 @@ const AuthenticatedApp: React.FunctionComponent<AuthenticatedAppProps> = () => {
                 <h2>{user?.name}</h2>
                 <p>{user?.email}</p>
             </div>
+            <Outlet />
             <button
                 onClick={() =>
                     logout({

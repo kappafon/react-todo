@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App.tsx';
+import App from './_app.tsx';
 import { Auth0Provider } from '@auth0/auth0-react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
@@ -12,6 +12,20 @@ const router = createBrowserRouter([
     {
         path: '/react-todo',
         element: <App />,
+        children: [
+            {
+                path: 'all',
+                element: <div>All TODOs</div>,
+            },
+            {
+                path: 'active',
+                element: <div>Active TODOs</div>,
+            },
+            {
+                path: 'completed',
+                element: <div>Completed TODOs</div>,
+            },
+        ],
     },
 ]);
 
