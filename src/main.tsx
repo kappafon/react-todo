@@ -1,8 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App.tsx';
-import './index.css';
 import { Auth0Provider } from '@auth0/auth0-react';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+
+import './index.css';
+
+export const redirectURI = `${window.location.origin}/react-todo/`;
+
+const router = createBrowserRouter([
+    {
+        path: '/react-todo',
+        element: <App />,
+    },
+]);
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     <React.StrictMode>
@@ -10,10 +21,10 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
             domain="dev-qhgi5fbx6fuxt8pk.us.auth0.com"
             clientId="I4U9JyKl1dy1LVKsnFHa0M6Vt1jFS83H"
             authorizationParams={{
-                redirect_uri: window.location.origin,
+                redirect_uri: redirectURI,
             }}
         >
-            <App />
+            <RouterProvider router={router} />
         </Auth0Provider>
     </React.StrictMode>
 );
